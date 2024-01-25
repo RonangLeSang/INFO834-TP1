@@ -1,5 +1,5 @@
 import json
-
+import sys
 import redis
 from datetime import datetime
 
@@ -22,4 +22,5 @@ if __name__ == "__main__":
     feur = r.get('user:1')
 
     print(json.loads(feur)["timeStamp"])
-
+    argument_from_shell = sys.argv[1]
+    print(argument_from_shell)
