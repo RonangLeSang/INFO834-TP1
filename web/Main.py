@@ -15,7 +15,7 @@ def clean_list(timeList):
     return timeList
 
 
-r = redis.Redis(host='localhost', port=6379, decode_responses=True)
+r = redis.Redis(host='localhost', port=6379, decode_responses=1)
 
 user_id = sys.argv[1]
 if r.exists(f"user:{user_id}"):
@@ -25,11 +25,11 @@ if r.exists(f"user:{user_id}"):
         user = {"timeStamp": timeList}
         user = json.dumps(user)
         r.set(f"user:{user_id}", user)
-        print(True)
+        print('True')
     else:
-        print(False)
+        print('False')
 else:
     user = {"timeStamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]}
     user = json.dumps(user)
     r.set(f"user:{user_id}", user)
-    print(True)
+    print('True')
