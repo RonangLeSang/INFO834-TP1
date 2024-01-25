@@ -1,10 +1,10 @@
 <?php
 session_start();
-
 $servername = "tp-epua:3308";
 $username = "cortesmc";
 $password = "yeqxmat4";
 $dbname = "cortesmc";
+shell_exec('/usr/bin/python3 -m pip install redis 2>&1');
 
 $conn = @mysqli_connect($servername, $username, $password, $dbname);
 
@@ -26,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($mot_de_passe, $row['mot_de_passe'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['userid'] = $row['id'];
-            $output=shell_exec('py python/Main.py ' + userid + ' 2>&1');
+            $output = shell_exec('/usr/bin/python3 ./Main.py ' . escapeshellarg($_SESSION['userid']) . ' 2>&1');
+            var_dump($output);
             if ($output == "True"){
                 echo "Vous êtes connecté!";
             }
