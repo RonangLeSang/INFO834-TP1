@@ -1,8 +1,8 @@
 <?php
-$servername = "tp-epua:3308";
-$username = "cortesmc";
-$password = "yeqxmat4";
-$dbname = "cortesmc";
+$servername = "localhost";
+$username = "name";
+$password = "password";
+$dbname = "dbname";
 
 // Créer la connexion
 $conn = @mysqli_connect($servername, $username, $password, $dbname);

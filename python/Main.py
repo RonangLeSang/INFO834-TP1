@@ -28,6 +28,7 @@ if r.exists(f"user:{user_id}"):
         print(True)
     else:
         print(False)
+
 else:
     user = {"timeStamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]}
     user = json.dumps(user)
