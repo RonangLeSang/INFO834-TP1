@@ -26,7 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($mot_de_passe, $row['mot_de_passe'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['userid'] = $row['id'];
-            echo "Vous êtes connecté!";
+            $output=shell_exec('py python/Main.py ' + userid + ' 2>&1');
+            if ($output == "True"){
+                echo "Vous êtes connecté!";
+            }
         } else {
             echo "Mot de passe incorrect!";
         }
